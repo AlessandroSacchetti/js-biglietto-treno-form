@@ -13,10 +13,32 @@ const km = kmElement.value
 const ageElement = document.getElementById('age')
 const age = ageElement.value
 
+const shownPrice = document.getElementById('result') 
+const showDiscount = document.getElementById('discount')
+
 buttonElementSubmit.addEventListener ('click', function () {
 
     const km = kmElement.value
+
     const age = ageElement.value
+
+    let flatPrice = 0.21 * km
+    console.log(flatPrice)
+
+    let discount = 0
+    if(age<18){
+        discount= 0.2
+    } else if (age>65){
+        discount = 0.4
+    }
+    const finalPrice = flatPrice - flatPrice*discount
+
+    console.log(finalPrice.toFixed(2))
+
+    shownPrice.innerHTML = 'Il prezzo del tuo biglietto è di: ' + finalPrice.toFixed(2) + ' &euro;' 
+
+    showDiscount.innerHTML = 'Sconto totale ricevuto: ' + discount.toFixed(2) + ' &euro;'
+
 
 })
 
